@@ -1,3 +1,4 @@
+import { Modal } from "@mantine/core";
 import ButtonComp from "../components/ButtonComp";
 import LogoButton from "../components/LogoButton";
 import "../styles/pages/home.scss";
@@ -41,8 +42,8 @@ const Home = () => {
         </div>
       </div>
       <div className="homeButtons">
-        <ButtonComp className={"buttonComp"} child={"Solicita un estudio de titulos"} />
-        <ButtonComp className={"buttonComp"} child={"Conviertete en colaborador"} />
+        <ButtonComp setClick ={()=> console.log('este boton funciona')} className={"buttonComp"} child={"Solicita un estudio de titulos"} />
+        <ButtonComp setClick ={()=> console.log('este boton funciona')} className={"buttonComp"} child={"Conviertete en colaborador"} />
       </div>
     </div>
   );
