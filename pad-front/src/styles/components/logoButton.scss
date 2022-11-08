@@ -1,0 +1,14 @@
+.logoButton{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    border-radius: 8px;
+    img{
+        height: 25px;
+        border-radius: 8px;
+    }
+
+}
+.logoButton:hover{
+    background-color: #234cad;
+}

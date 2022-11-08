@@ -1,0 +1,17 @@
+.accountButton{
+    border: none;
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+
+    border-radius: 8px;
+    img{
+        height: 25px;
+        border-radius: 50%;
+        color: white;
+        background-color: transparent;
+    }
+}
+.accountButton:hover{
+    background-color: #234cad;
+}

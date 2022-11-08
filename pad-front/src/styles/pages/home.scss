@@ -1,0 +1,160 @@
+.homeContainer {
+  width: 100%;
+  height: auto;
+  top: 0px;
+  padding: 16px 0px;
+  position: 50%;
+  margin-bottom: 57px;
+}
+.homeHeaderFlex {
+}
+.homeHeaderSlogan {
+  height: 100%;
+  position: relative;
+  .logoHome {
+    position: absolute;
+    top: -5px;
+    right: 14px;
+  }
+  .sloganText {
+    padding: 48px;
+  }
+  h1 {
+    margin: 0;
+    color: #32abdd;
+    line-height: 25px;
+  }
+  .sloganAditionalText {
+    background-color: #2480af;
+    padding: 48px;
+  }
+  h2 {
+    margin: 0;
+    color: #35b6e5;
+  }
+}
+.homeImgContainer {
+  position: relative;
+  .homeImg {
+    width: 100%;
+  }
+  .homeImgSpan {
+    position: absolute;
+    left: 24px;
+    bottom: 14px;
+    font-size: 16px;
+  }
+}
+.offersflex {
+  padding: 48px;
+  background-color: #222222;
+  margin: 0px;
+  font-weight: 700;
+
+  .whatWeOffer {
+    color: #2a90be;
+    font-size: 24px;
+  }
+  .offerText {
+    color: white;
+    font-size: 16px;
+  }
+}
+.homeButtons{
+  .buttonComp{
+    margin-top: 10px;
+    width: 80%;
+    border: none;
+    padding: 12px;
+    cursor: pointer;
+    background-color: #153172;
+    color: white;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    border-radius: 8px;
+  }
+  .buttonComp:hover{
+    background-color: #2480af;
+    color: white;
+  }
+}
+@media (min-width: 768px) {
+  .homeContainer {
+    position: revert;
+
+  margin-bottom: 0px;
+  }
+  .buttonComp{
+    width: 45% !important;
+  }
+  .homeHeaderFlex {
+    display: flex;
+    align-items: center;
+    
+  }
+  .homeImgSpan {
+    visibility: hidden;
+  }
+  .homeImg {
+    height: 100% !important;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  .logoHome {
+    visibility: hidden;
+  }
+  .offersflex {
+    display: flex;
+    margin: 0 auto;
+    width: 70%;
+    border-radius: 8px;
+  }
+  .homeButtons{
+    margin-top: 14px;
+    display: flex;
+    justify-content: space-around;
+  }
+}
+@media (min-width: 992px) {
+  .offersflex {
+    
+    width: 60%;
+  }
+  .homeHeaderFlex {
+    margin-bottom: 24px;
+    
+  }
+  .homeButtons{
+    margin-top: 24px;
+  }
+  .buttonComp{
+    width: 30% !important;
+  }
+}
+@media (min-width: 1200px) {
+  .homeHeaderFlex {
+    justify-content: space-around;
+    margin-bottom: 40px;
+  }
+  .homeHeaderSlogan {
+    width: 45%;
+  }
+  .homeImgContainer {
+    width: 45%;
+  }
+  .homeImg {
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  .offersflex {
+    
+    width: 45% !important;
+  }
+  .sloganAditionalText{
+    border-radius: 8px;
+  }
+  .homeButtons{
+    margin-top: 40px;
+  }
+}
