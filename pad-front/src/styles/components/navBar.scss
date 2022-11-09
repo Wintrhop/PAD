@@ -1,4 +1,4 @@
-.navBarBlock{
+.navBarBlock {
   width: 100%;
   height: auto;
   position: fixed;
@@ -9,11 +9,15 @@
   display: flex;
   justify-content: space-between;
   background-color: #153172;
-  
-  
+
   .navBarflex1 {
     display: flex;
+    align-items: center;
+.nameWelcome{
+  color: white;
+  font-size: 16px;
 
+}
     button {
       padding: 8px;
       margin: 5px;
@@ -21,7 +25,7 @@
   }
 }
 @media (min-width: 768px) {
-  .navBarBlock{
+  .navBarBlock {
     position: relative !important;
   }
   .navBarFlex {

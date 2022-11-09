@@ -7,8 +7,12 @@ import {
   } from "@mantine/core";
   import { useForm } from "@mantine/form";
   import axios from "axios"
+import { useDispatch } from "react-redux";
+import { changeisExpired, changeName } from "../store/reducer/authReducer";
 
 const FormLogIn = ({setOpenedLog, setOpenedPop, setExpired}) => {
+  
+  const dispatch = useDispatch();
     const passwordRegex = new RegExp(
         "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"
       );
@@ -43,6 +47,8 @@ const FormLogIn = ({setOpenedLog, setOpenedPop, setExpired}) => {
             localStorage.setItem('name', data.data.name)
             localStorage.setItem('email', data.data.email);
             localStorage.setItem('profileImg',data.data.profileImg);
+            dispatch(changeisExpired(false));
+            dispatch(changeName(data.data.name));
             setExpired(false);
             setOpenedLog(false);
             setOpenedPop(false);

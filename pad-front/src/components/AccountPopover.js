@@ -4,8 +4,11 @@ import "../styles/components/accountPopover.scss";
 import FormLogIn from "./FormLogIn";
 import FormSignup from "./FormSignup";
 import { useJwt } from "react-jwt";
+import { useDispatch } from "react-redux";
+import { changeisExpired } from "../store/reducer/authReducer";
 
 const AccountPopover = ({ setOpenedPop }) => {
+  const dispatch= useDispatch();
   const [opened, setOpened] = useState(false);
   const [openedLog, setOpenedLog] = useState(false);
 
@@ -19,7 +22,8 @@ const AccountPopover = ({ setOpenedPop }) => {
     localStorage.removeItem("role");
     localStorage.removeItem("name");
     localStorage.removeItem("profileImg");
-    setOpenedPop(false)
+    dispatch(changeisExpired(true));
+    setOpenedPop(false);
   };
   useEffect(() => {
     setExpired(isExpired);

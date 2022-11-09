@@ -1,9 +1,11 @@
-import { Modal } from "@mantine/core";
+
+import { useNavigate } from "react-router-dom";
 import ButtonComp from "../components/ButtonComp";
 import LogoButton from "../components/LogoButton";
 import "../styles/pages/home.scss";
 
 const Home = () => {
+  const navigate = useNavigate()
   return (
     <div className="homeContainer">
       <div className="homeHeaderFlex">
@@ -42,8 +44,8 @@ const Home = () => {
         </div>
       </div>
       <div className="homeButtons">
-        <ButtonComp setClick ={()=> console.log('este boton funciona')} className={"buttonComp"} child={"Solicita un estudio de titulos"} />
-        <ButtonComp setClick ={()=> console.log('este boton funciona')} className={"buttonComp"} child={"Conviertete en colaborador"} />
+        <ButtonComp setClick ={()=> navigate("/userClient")} className={"buttonComp"} child={"Solicita un estudio de titulos"} />
+        <ButtonComp setClick ={()=> navigate("/advicer")} className={"buttonComp"} child={"Conviertete en colaborador"} />
       </div>
     </div>
   );

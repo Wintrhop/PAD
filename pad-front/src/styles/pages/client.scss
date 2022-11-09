@@ -1,0 +1,102 @@
+.clientContainer{
+    width: 100%;
+    margin: auto 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+}
+.loginAndSign{
+    .loginAndSignText{
+
+        color: #32abdd;
+        font-size: 28px;
+        font-weight: 700;
+        padding: 48px;
+        line-height: 25px;
+    }
+    .popoverBtn{
+        margin-top: 10px;
+        width: 80%;
+        border: none;
+        padding: 12px;
+        cursor: pointer;
+        background-color: #153172;
+        color: white;
+        font-size: 16px;
+        font-family: 'Roboto', sans-serif;
+        font-weight: bold;
+        border-radius: 8px;
+    }
+    .popoverBtn:hover{
+        background-color: #2480af;
+    color: white;
+    }
+}
+.infoContainer{
+    margin: auto 0;
+}
+.infoClientFlex{ 
+    display: flex;
+    align-items: center;
+
+}
+.profileImgContainer{
+    width: 50%;
+
+}
+.profileImg{
+width: 20%;
+min-width: 77px;
+border-radius: 100%;
+}
+.infoClient{
+    width: 50%;
+}
+
+.clientLogo{
+    width: 100%;
+    max-width: 400px;
+}
+
+
+@media (min-width: 768px) {
+    .clientContainer{
+        
+    }
+    .clientHeaderFlex{
+        margin-top: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+    }
+    .clientLogoContainer{
+        width: 30%;
+    }
+    .loginAndSign{
+    .popoverBtn{
+        width: 45%;
+    }}
+    .infoClientFlex{ 
+    justify-content: center;  
+    
+    }
+    
+    .profileImgContainer{
+        width: 30% !important;
+    
+    }
+    .infoClient{
+        width: 30% !important;
+    }
+
+
+}
+@media (min-width: 992px) {
+    .clientLogoContainer{
+        width: 25%;
+    }
+}
+@media (min-width: 1200px) {
+
+}
