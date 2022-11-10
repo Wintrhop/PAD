@@ -1,102 +1,150 @@
-.clientContainer{
-    width: 100%;
-    margin: auto 0;
-    font-family: 'Roboto', sans-serif;
-    font-size: 14px;
-    font-weight: bold;
+.clientContainer {
+  width: 100%;
+  margin: auto 0;
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  font-weight: bold;
 }
-.loginAndSign{
-    .loginAndSignText{
-
-        color: #32abdd;
-        font-size: 28px;
-        font-weight: 700;
-        padding: 48px;
-        line-height: 25px;
-    }
-    .popoverBtn{
-        margin-top: 10px;
-        width: 80%;
-        border: none;
-        padding: 12px;
-        cursor: pointer;
-        background-color: #153172;
-        color: white;
-        font-size: 16px;
-        font-family: 'Roboto', sans-serif;
-        font-weight: bold;
-        border-radius: 8px;
-    }
-    .popoverBtn:hover{
-        background-color: #2480af;
+.loginAndSign {
+  .loginAndSignText {
+    color: #32abdd;
+    font-size: 28px;
+    font-weight: 700;
+    padding: 48px;
+    line-height: 25px;
+  }
+  .popoverBtn {
+    margin-top: 10px;
+    width: 80%;
+    border: none;
+    padding: 12px;
+    cursor: pointer;
+    background-color: #153172;
     color: white;
+    font-size: 16px;
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    border-radius: 8px;
+  }
+  .popoverBtn:hover {
+    background-color: #2480af;
+    color: white;
+  }
+}
+// .infoContainer{
+//     margin: auto 0;
+// }
+.infoClientFlex {
+  display: flex;
+  align-items: center;
+}
+.profileImgContainer {
+  width: 50%;
+}
+.profileImg {
+  width: 20%;
+  min-width: 77px;
+  border-radius: 100%;
+}
+.infoClient {
+  width: 50%;
+}
+.clientLogoContainer{
+  visibility: hidden;
+}
+.clientLogo {
+  width: 100%;
+  max-width: 400px;
+}
+.formStudy {
+  position: relative;
+  width: 100%;
+  h1 {
+    line-height: 25px;
+  }
+  .inputDiv {
+    margin-top: 10px;
+    width: 80%;
+    border: none;
+    padding: 12px;
+    cursor: pointer;
+    background-color: #2480af;
+    color: white;
+    font-size: 16px;
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    border-radius: 8px;
+    input {
+      visibility: hidden;
+      position: absolute;
     }
-}
-.infoContainer{
-    margin: auto 0;
-}
-.infoClientFlex{ 
-    display: flex;
-    align-items: center;
-
-}
-.profileImgContainer{
-    width: 50%;
-
-}
-.profileImg{
-width: 20%;
-min-width: 77px;
-border-radius: 100%;
-}
-.infoClient{
-    width: 50%;
-}
-
-.clientLogo{
+  }
+  .inputDiv:hover {
+    background-color: #288fc2;
+    color: white;
+  }
+  .condImg {
     width: 100%;
-    max-width: 400px;
+    margin-top: 10px;
+  }
 }
-
 
 @media (min-width: 768px) {
-    .clientContainer{
-        
+  .clientContainer {
+    height: 100%;
+    .centerContainer{
+      height: auto
     }
-    .clientHeaderFlex{
-        margin-top: 10px;
+  }
+  .clientHeaderFlex {
+    margin-top: 10px;
     display: flex;
     justify-content: space-around;
-    align-items: center;
-    
+    height: 100%;
+  }
+  .clientLogoContainer {
+    width: 30%;
+    height: 100%;
+    .logoSticky {
+      position: sticky;
+      top: 20px;
     }
-    .clientLogoContainer{
-        width: 30%;
+    .clientLogo {
     }
-    .loginAndSign{
-    .popoverBtn{
-        width: 45%;
-    }}
-    .infoClientFlex{ 
-    justify-content: center;  
-    
+  }
+  .loginAndSign {
+    .popoverBtn {
+      width: 45%;
     }
-    
-    .profileImgContainer{
-        width: 30% !important;
-    
-    }
-    .infoClient{
-        width: 30% !important;
-    }
+  }
+  .infoClientFlex {
+    justify-content: center;
+  }
 
-
+  .profileImgContainer {
+    width: 30% !important;
+  }
+  .infoClient {
+    width: 30% !important;
+  }
+  .clientLogo {
+    visibility: visible;
+  }
+  .formStudy {
+    .inputDiv {
+      width: 45% !important;
+      margin: 15px;
+    }
+    .condImg {
+      width: 30%;
+      border-radius: 8px;
+    }
+  }
 }
 @media (min-width: 992px) {
-    .clientLogoContainer{
-        width: 25%;
-    }
+  .clientLogoContainer {
+    width: 25%;
+  }
 }
 @media (min-width: 1200px) {
-
 }
