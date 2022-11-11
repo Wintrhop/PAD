@@ -58,6 +58,7 @@
   .offerText {
     color: white;
     font-size: 16px;
+    
   }
 }
 .homeButtons{
@@ -109,6 +110,11 @@
     margin: 0 auto;
     width: 70%;
     border-radius: 8px;
+    text-align: center;
+    justify-content: center;
+    .offerText{
+      padding-left: 10px;
+    }
   }
   .homeButtons{
     margin-top: 14px;

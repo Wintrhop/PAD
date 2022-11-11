@@ -8,7 +8,7 @@ import {
 import { useForm } from "@mantine/form";
 import axios from "axios"
 import { useDispatch } from "react-redux";
-import { changeisExpired, changeName } from "../store/reducer/authReducer";
+import { changeisExpired, changeName, changeRole } from "../store/reducer/authReducer";
 
 const FormSignup = ({setOpened, setOpenedPop,setExpired}) => {
   
@@ -54,8 +54,11 @@ const FormSignup = ({setOpened, setOpenedPop,setExpired}) => {
         setExpired(false)
         dispatch(changeisExpired(false));
         dispatch(changeName(data.data.name));
+        dispatch(changeRole(data.data.role))
         setOpened(false);
-        setOpenedPop(false);
+        if(setOpenedPop!== undefined){
+          setOpenedPop(false);
+        }
       } catch (err) {
         err.response.status === 400
           ? alert('Usuario o Contraseña errada.')

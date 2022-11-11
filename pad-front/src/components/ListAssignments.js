@@ -3,36 +3,43 @@ import { useEffect, useState } from "react";
 import Card from "./Card";
 import "../styles/components/listAllStudies.scss";
 
-const ListallStudies = () => {
+const ListAssignments = () => {
   const token = localStorage.getItem("token");
-  const [studies, setStudies] = useState(null);
-  const getStudies = async () => {
+  const [assignments, setAssignments] = useState(null);
+  const[pendingsAssign, setPendingsAssign]= useState(null);
+  const getAssignments = async () => {
     try {
       const { data } = await axios.get(
-        "https://property-advice.herokuapp.com/api/studies",
+        "https://property-advice.herokuapp.com/api/studies/advicer",
         {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         }
       );
-      setStudies(data.data.studies);
+      const allAssignments = data.data.studiesAssignment;
+      const pendingsAssignments = allAssignments.filter(
+        (item) => item.advice === undefined
+      );
+
+      setAssignments(allAssignments);
+      setPendingsAssign(pendingsAssignments);
     } catch (err) {
       console.log(err.response.data);
     }
   };
 
   useEffect(() => {
-    getStudies();
+    getAssignments();
     // eslint-disable-next-line
-  }, [studies]);
+  }, [assignments]);
   return (
     <div className="studiesBox">
-      {studies ? (
+      {pendingsAssign ? (
         <div className="studiesContainer">
-          <div className="studiesTitle">Tus Solicitudes</div>
+          <div className="studiesTitle">Tus Asignaciones</div>
           <div className="cardMapContainer">
-            {studies.map((item) => {
+            {pendingsAssign.map((item) => {
               return (
                 <div className="mapCard" key={item._id}>
                   <Card item={item} />
@@ -48,4 +55,4 @@ const ListallStudies = () => {
   );
 };
 
-export default ListallStudies;
+export default ListAssignments;

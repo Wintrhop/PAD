@@ -5,7 +5,7 @@ import FormLogIn from "./FormLogIn";
 import FormSignup from "./FormSignup";
 import { useJwt } from "react-jwt";
 import { useDispatch } from "react-redux";
-import { changeisExpired } from "../store/reducer/authReducer";
+import { changeisExpired, changeName, changeRole } from "../store/reducer/authReducer";
 
 const AccountPopover = ({ setOpenedPop }) => {
   const dispatch= useDispatch();
@@ -23,6 +23,8 @@ const AccountPopover = ({ setOpenedPop }) => {
     localStorage.removeItem("name");
     localStorage.removeItem("profileImg");
     dispatch(changeisExpired(true));
+    dispatch(changeRole(""))
+    dispatch(changeName(""))
     setOpenedPop(false);
   };
   useEffect(() => {
@@ -55,7 +57,7 @@ const AccountPopover = ({ setOpenedPop }) => {
             centered
             opened={openedLog}
             onClose={() => setOpenedLog(false)}
-            title="Inicia Sesion"
+            title="Inicia Sesión"
             overflow="outside"
             withCloseButton={false}
             size="45%"
@@ -67,12 +69,12 @@ const AccountPopover = ({ setOpenedPop }) => {
             />
           </Modal>
           <button className="popoverBtn" onClick={() => setOpenedLog(true)}>
-            Inicia Sesion
+            Inicia Sesión
           </button>
         </div>
       ) : (
         <button className="popoverBtn" onClick={() => closeSession()}>
-          Cerrar Sesion
+          Cerrar Sesión
         </button>
       )}
     </div>

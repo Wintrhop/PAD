@@ -1,0 +1,29 @@
+.AdvicerContainer{
+    margin-bottom: 60px;
+}
+
+
+
+
+
+
+
+
+@media (min-width: 768px) {
+    .advicerFlexContainer{
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-around;
+        height: 100%;
+    }
+    .advicerBox{
+        width: 70%;
+    }
+
+}
+@media (min-width: 992px) {
+
+}
+@media (min-width: 1200px) {
+    
+}

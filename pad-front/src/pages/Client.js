@@ -3,11 +3,17 @@ import AccountPopover from "../components/AccountPopover";
 import LogoRadius from "../styles/imgs/PadwithBorderLogo.png";
 import "../styles/pages/client.scss";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ListallStudies from "../components/ListallStudies";
+import Swal from "sweetalert2";
+import ButtonComp from "../components/ButtonComp";
+import { useNavigate } from "react-router-dom";
+import InfoClient from "../components/InfoClient";
 
 const Client = () => {
+  const navigate = useNavigate();
   const reduxExpired = useSelector((state) => state.authReducer.isExpired);
+  const role = useSelector((state) => state.authReducer.role);
   const token = localStorage.getItem("token");
   const name = localStorage.getItem("name");
   const email = localStorage.getItem("email");
@@ -20,7 +26,16 @@ const Client = () => {
   const [escrituraPrev, setEscrituraPrev] = useState(null);
   const [regPropHo, setRegPropHo] = useState(null);
   const [regPropHoPrev, setRegPropHoPrev] = useState(null);
+  const [isDisable, setIsDisable] = useState(false);
 
+let buttonText = "";
+  if (role==="client"){
+    buttonText="Conviertete en colaborador";
+  } else{
+    buttonText="Modo Advicer";
+  }
+
+  
   function readFile(file, setFilePrev) {
     const reader = new FileReader();
 
@@ -42,7 +57,17 @@ const Client = () => {
       data.append("escritura", escritura);
       data.append("regPropHorizontal", regPropHo);
 
-      await axios.post(
+      if (!tradlibPrev || !mayorExtPrev || !escrituraPrev || !regPropHoPrev) {
+        Swal.fire({
+          title: "Error",
+          text: "Debes Agregar todos los documentos",
+          icon: "error",
+          confirmButtonText: "Perfecto",
+        });
+        throw new Error("sin documentos");
+      }
+
+       await axios.post(
         "https://property-advice.herokuapp.com/api/studies",
         data,
         {
@@ -52,6 +77,15 @@ const Client = () => {
           },
         }
       );
+      Swal.fire({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        icon: "success",
+        title: "Estudio de Titulos Creado",
+      });
       document.getElementById("tradLib").value = "";
       document.getElementById("mayorExtension").value = "";
       document.getElementById("escritura").value = "";
@@ -76,25 +110,14 @@ const Client = () => {
               </div>
             ) : (
               <div className="infoContainer">
-                <div className="infoClientFlex">
-                  <div className="profileImgContainer">
-                    <img
-                      className="profileImg"
-                      src={profileImg}
-                      alt="profile img"
-                    ></img>
-                  </div>
-                  <div className="infoClient">
-                    <div className="nameClient">{name}</div>
-                    <div className="emailClient">{email}</div>
-                  </div>
-                </div>
+                <InfoClient name={name} email={email} profileImg={profileImg} />
+
                 <div className="formCreateStudy">
                   <form onSubmit={handleSubmit} className="formStudy">
                     <h1>Los Documentos deben ser Formato Pdf</h1>
                     <button className="inputDiv" type="button">
                       <label htmlFor={"tradLib"}>
-                        Certificado de Tradicion y libertad
+                        Certificado de Tradición y libertad
                       </label>
                       <input
                         type={"file"}
@@ -110,7 +133,7 @@ const Client = () => {
 
                     <button className="inputDiv" type="button">
                       <label htmlFor={"mayorExtension"}>
-                        Certificado de Mayor Extension
+                        Certificado de Mayor Extensión
                       </label>
                       <input
                         type={"file"}
@@ -130,7 +153,7 @@ const Client = () => {
                     </button>
 
                     <button className="inputDiv" type="button">
-                      <label htmlFor={"escritura"}>Escritura Publica</label>
+                      <label htmlFor={"escritura"}>Escritura Pública</label>
                       <input
                         type={"file"}
                         name={"escritura"}
@@ -197,7 +220,11 @@ const Client = () => {
                       ></img>
                     )}
                     <div className="loginAndSign">
-                      <button type="submit" className="popoverBtn">
+                      <button
+                        disabled={isDisable}
+                        type="submit"
+                        className="popoverBtn"
+                      >
                         Solicitar Estudio de Titulos
                       </button>
                     </div>
@@ -207,7 +234,7 @@ const Client = () => {
               </div>
             )}
           </div>
-          
+          <div className="clientLogobox">
             <div className="clientLogoContainer">
               <div className="logoSticky">
                 <img
@@ -215,9 +242,18 @@ const Client = () => {
                   src={LogoRadius}
                   alt="Property Advice"
                 ></img>
+                {reduxExpired ? (
+                  <></>
+                ) : (
+                  <ButtonComp
+                    setClick={() => navigate("/advicer")}
+                    className={"buttonComp1"}
+                    child={buttonText}
+                  />
+                )}
               </div>
             </div>
-          
+          </div>
         </div>
       </div>
     </div>

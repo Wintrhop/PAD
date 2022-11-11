@@ -1,9 +1,14 @@
 import { Carousel } from "@mantine/carousel";
-import { useMantineTheme } from "@mantine/core";
 import React from "react";
 
 const Card = ({ item }) => {
-    const theme = useMantineTheme();
+  const toDate = new Date(item.createdAt);
+  const date = toDate.toLocaleDateString("es-CO", {
+    weekday: "short",
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
   return (
     <div className="cardContainer">
       <Carousel sx={{ maxWidth: 320 }} mx="auto" withIndicators height={200}>
@@ -20,8 +25,16 @@ const Card = ({ item }) => {
           <img src={item.regPropHorizontal} alt="regPropHorizontal"></img>
         </Carousel.Slide>
       </Carousel>
-      <div><span>{item.createdAt}</span></div>
-      {item.advice && <div><span>{item.advice}</span></div>}
+      <div>
+        <span>{`Creado el ${date}`}</span>
+      </div>
+      {item.advice ? (
+        <div>
+          <span>{item.advice}</span>
+        </div>
+      ) : (
+        <span>pendiente</span>
+      )}
     </div>
   );
 };

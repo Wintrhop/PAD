@@ -39,13 +39,13 @@ const Home = () => {
       <div className="offersflex">
         <div className="whatWeOffer">¿Qué ofrecemos?</div>
         <div className="offerText">
-          En Property Advice podras solicitar el estudio de un titulo, o
+          En Property Advice podrás solicitar el estudio de un titulo acreditado por un profesional, o
           convertirte en Advicer colaborador y ganar dinero adicional.
         </div>
       </div>
       <div className="homeButtons">
         <ButtonComp setClick ={()=> navigate("/userClient")} className={"buttonComp"} child={"Solicita un estudio de titulos"} />
-        <ButtonComp setClick ={()=> navigate("/advicer")} className={"buttonComp"} child={"Conviertete en colaborador"} />
+        <ButtonComp setClick ={()=> navigate("/advicer")} className={"buttonComp"} child={"Conviértete en colaborador"} />
       </div>
     </div>
   );
