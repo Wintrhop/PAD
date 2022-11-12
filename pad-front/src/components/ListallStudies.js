@@ -18,7 +18,7 @@ const ListallStudies = () => {
       );
       setStudies(data.data.studies);
     } catch (err) {
-      console.log(err.response.data);
+      const err1 = err.response.data;
     }
   };
 

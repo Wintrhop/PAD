@@ -1,0 +1,17 @@
+.cardContainer{
+    .cardBtn{
+        border: none;
+        background-color: white;
+        width: 100%;
+        cursor: pointer;
+        .cardImg{
+            border-radius: 8px;
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+    
+}
+.cardContainer:hover{
+    box-shadow: 0 6px 16px 0 rgb(0 0 0 / 12%);
+}

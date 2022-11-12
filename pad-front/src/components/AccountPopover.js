@@ -7,7 +7,7 @@ import { useJwt } from "react-jwt";
 import { useDispatch } from "react-redux";
 import { changeisExpired, changeName, changeRole } from "../store/reducer/authReducer";
 
-const AccountPopover = ({ setOpenedPop }) => {
+const AccountPopover = ({ setOpenedPop, hidden }) => {
   const dispatch= useDispatch();
   const [opened, setOpened] = useState(false);
   const [openedLog, setOpenedLog] = useState(false);
@@ -50,7 +50,7 @@ const AccountPopover = ({ setOpenedPop }) => {
               setExpired={setExpired}
             />
           </Modal>
-          <button className="popoverBtn" onClick={() => setOpened(true)}>
+          <button className={`popoverBtn ${hidden}`} onClick={() => setOpened(true)}>
             Registrarse
           </button>
           <Modal

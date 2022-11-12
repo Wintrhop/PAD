@@ -1,18 +1,21 @@
-.accountPopover{
-    align-items: center;
-    .popoverBtn{
-        width: 100%;
-        border: none;
-        background-color: transparent;
-        cursor: pointer;
-        border-radius: 8px;
-        margin: 5px;
-        font-family: 'Roboto', sans-serif;
-        font-size: 16px;
-
-    }
-    .popoverBtn:hover{
-        background-color: #5672b5;
-        color: white;
-    }
+.accountPopover {
+  align-items: center;
+  .popoverBtn {
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    border-radius: 8px;
+    margin: 5px;
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+  }
+  .hidden {
+    display: none;
+    visibility: collapse;
+  }
+  .popoverBtn:hover {
+    background-color: #5672b5;
+    color: white;
+  }
 }

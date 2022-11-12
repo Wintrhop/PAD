@@ -5,6 +5,7 @@ import "./styles/pages/app.scss";
 import NavBar from "./components/NavBar";
 import Client from "./pages/Client";
 import Advicer from "./pages/Advicer";
+import Study from "./pages/Study";
 
 function App() {
   return (
@@ -14,9 +15,13 @@ function App() {
           <NavBar />
           <Routes>
             <Route exact path="/" element={<Home />} />
-            <Route exact path="/about" element={<About />} />
+            <Route exact path="/about" element={<About/>} />
             <Route exact path="/userClient" element={<Client/>}/>
             <Route exact path="/advicer" element={<Advicer/>}/>
+            <Route path="/study">
+              <Route path=":id" element={<Study />} />
+            </Route>
+            
           </Routes>
         </div>
       </BrowserRouter>

@@ -1,7 +1,6 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
-import { useJwt } from "react-jwt";
-import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import AccountPopover from "../components/AccountPopover";
@@ -9,24 +8,22 @@ import ButtonComp from "../components/ButtonComp";
 import InfoClient from "../components/InfoClient";
 import ListAssignments from "../components/ListAssignments";
 import PetitionCreated from "../components/PetitionCreated";
-import { changeisExpired } from "../store/reducer/authReducer";
 import LogoRadius from "../styles/imgs/PadwithBorderLogo.png";
 import "../styles/pages/advicer.scss";
+
+import "../styles/components/listAllStudies.scss";
 
 const Advicer = () => {
   const navigate = useNavigate();
   const reduxExpired = useSelector((state) => state.authReducer.isExpired);
   const role = useSelector((state) => state.authReducer.role);
   const token = localStorage.getItem("token");
-  const { isExpired } = useJwt(token);
-
   const name = localStorage.getItem("name");
   const email = localStorage.getItem("email");
   const profileImg = localStorage.getItem("profileImg");
   const [certificate, setCertificate] = useState(null);
   const [certificatePrev, setCertificatePrev] = useState(null);
   const [petAlreadyCreated, setPetAlreadyCreated] = useState(null);
-  const [userRole, setUserRole] = useState("");
 
   function readFile(file, setFilePrev) {
     const reader = new FileReader();
@@ -99,14 +96,14 @@ const Advicer = () => {
                 alt="Property Advice"
               ></img>
               {reduxExpired ? (
-                  <></>
-                ) : (
-                  <ButtonComp
-                    setClick={() => navigate("/userClient")}
-                    className={"buttonComp1"}
-                    child={"Solicitar un estudio de titulos"}
-                  />
-                )}
+                <></>
+              ) : (
+                <ButtonComp
+                  setClick={() => navigate("/userClient")}
+                  className={"buttonComp1 cardContainer"}
+                  child={"Solicitar un estudio de titulos"}
+                />
+              )}
             </div>
           </div>
         </div>
@@ -153,7 +150,7 @@ const Advicer = () => {
               <div className="formCreateStudy">
                 <form onSubmit={handleSubmit} className="formStudy">
                   <h1>Tu tarjeta profesional debe estar en formato Pdf</h1>
-                  <button className="inputDiv" type="button">
+                  <button className="inputDiv cardContainer" type="button">
                     <label htmlFor={"certificate"}>
                       Seleccionar tarjeta profesional
                     </label>
@@ -181,7 +178,7 @@ const Advicer = () => {
                     ></img>
                   )}
                   <div className="loginAndSign">
-                    <button type="submit" className="popoverBtn">
+                    <button type="submit" className="popoverBtn cardContainer">
                       Enviar documento
                     </button>
                   </div>

@@ -3,12 +3,14 @@ import AccountPopover from "../components/AccountPopover";
 import LogoRadius from "../styles/imgs/PadwithBorderLogo.png";
 import "../styles/pages/client.scss";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ListallStudies from "../components/ListallStudies";
 import Swal from "sweetalert2";
 import ButtonComp from "../components/ButtonComp";
 import { useNavigate } from "react-router-dom";
 import InfoClient from "../components/InfoClient";
+
+import "../styles/components/listAllStudies.scss";
 
 const Client = () => {
   const navigate = useNavigate();
@@ -26,16 +28,14 @@ const Client = () => {
   const [escrituraPrev, setEscrituraPrev] = useState(null);
   const [regPropHo, setRegPropHo] = useState(null);
   const [regPropHoPrev, setRegPropHoPrev] = useState(null);
-  const [isDisable, setIsDisable] = useState(false);
 
-let buttonText = "";
-  if (role==="client"){
-    buttonText="Conviertete en colaborador";
-  } else{
-    buttonText="Modo Advicer";
+  let buttonText = "";
+  if (role === "client") {
+    buttonText = "Conviertete en colaborador";
+  } else {
+    buttonText = "Modo Advicer";
   }
 
-  
   function readFile(file, setFilePrev) {
     const reader = new FileReader();
 
@@ -67,7 +67,7 @@ let buttonText = "";
         throw new Error("sin documentos");
       }
 
-       await axios.post(
+      await axios.post(
         "https://property-advice.herokuapp.com/api/studies",
         data,
         {
@@ -115,7 +115,7 @@ let buttonText = "";
                 <div className="formCreateStudy">
                   <form onSubmit={handleSubmit} className="formStudy">
                     <h1>Los Documentos deben ser Formato Pdf</h1>
-                    <button className="inputDiv" type="button">
+                    <button className="inputDiv cardContainer" type="button">
                       <label htmlFor={"tradLib"}>
                         Certificado de Tradición y libertad
                       </label>
@@ -131,7 +131,7 @@ let buttonText = "";
                       ></input>
                     </button>
 
-                    <button className="inputDiv" type="button">
+                    <button className="inputDiv cardContainer" type="button">
                       <label htmlFor={"mayorExtension"}>
                         Certificado de Mayor Extensión
                       </label>
@@ -152,7 +152,7 @@ let buttonText = "";
                       ></input>
                     </button>
 
-                    <button className="inputDiv" type="button">
+                    <button className="inputDiv cardContainer" type="button">
                       <label htmlFor={"escritura"}>Escritura Pública</label>
                       <input
                         type={"file"}
@@ -171,7 +171,7 @@ let buttonText = "";
                       ></input>
                     </button>
 
-                    <button className="inputDiv" type="button">
+                    <button className="inputDiv cardContainer" type="button">
                       <label htmlFor={"regPropHorizontal"}>
                         Reglamento de propiedad Horizontal
                       </label>
@@ -220,11 +220,7 @@ let buttonText = "";
                       ></img>
                     )}
                     <div className="loginAndSign">
-                      <button
-                        disabled={isDisable}
-                        type="submit"
-                        className="popoverBtn"
-                      >
+                      <button type="submit" className="popoverBtn">
                         Solicitar Estudio de Titulos
                       </button>
                     </div>
@@ -248,6 +244,7 @@ let buttonText = "";
                   <ButtonComp
                     setClick={() => navigate("/advicer")}
                     className={"buttonComp1"}
+                    selected={"cardContainer"}
                     child={buttonText}
                   />
                 )}
