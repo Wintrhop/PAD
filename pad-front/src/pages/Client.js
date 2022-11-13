@@ -114,10 +114,10 @@ const Client = () => {
 
                 <div className="formCreateStudy">
                   <form onSubmit={handleSubmit} className="formStudy">
-                    <h1>Los Documentos deben ser Formato Pdf</h1>
+                    <h1>Los documentos deben ser formato Pdf</h1>
                     <button className="inputDiv cardContainer" type="button">
                       <label htmlFor={"tradLib"}>
-                        Certificado de Tradición y libertad
+                        Certificado de tradición y libertad
                       </label>
                       <input
                         type={"file"}
@@ -133,7 +133,7 @@ const Client = () => {
 
                     <button className="inputDiv cardContainer" type="button">
                       <label htmlFor={"mayorExtension"}>
-                        Certificado de Mayor Extensión
+                        Certificado de mayor extensión
                       </label>
                       <input
                         type={"file"}
@@ -153,7 +153,7 @@ const Client = () => {
                     </button>
 
                     <button className="inputDiv cardContainer" type="button">
-                      <label htmlFor={"escritura"}>Escritura Pública</label>
+                      <label htmlFor={"escritura"}>Escritura pública</label>
                       <input
                         type={"file"}
                         name={"escritura"}
@@ -173,7 +173,7 @@ const Client = () => {
 
                     <button className="inputDiv cardContainer" type="button">
                       <label htmlFor={"regPropHorizontal"}>
-                        Reglamento de propiedad Horizontal
+                        Reglamento de propiedad horizontal
                       </label>
                       <input
                         type={"file"}

@@ -6,6 +6,7 @@ import NavBar from "./components/NavBar";
 import Client from "./pages/Client";
 import Advicer from "./pages/Advicer";
 import Study from "./pages/Study";
+import Admin from "./pages/Admin";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route exact path="/about" element={<About/>} />
             <Route exact path="/userClient" element={<Client/>}/>
             <Route exact path="/advicer" element={<Advicer/>}/>
+            <Route exact path="/admin" element={<Admin/>}/>
             <Route path="/study">
               <Route path=":id" element={<Study />} />
             </Route>

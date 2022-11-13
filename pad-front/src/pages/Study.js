@@ -13,14 +13,14 @@ const Study = () => {
   const navigate = useNavigate();
   const reduxExpired = useSelector((state) => state.authReducer.isExpired);
   const role = useSelector((state) => state.authReducer.role);
-  
+
   const name = localStorage.getItem("name");
   const email = localStorage.getItem("email");
   const profileImg = localStorage.getItem("profileImg");
   const [advice, setAdvice] = useState(null);
   const [advicePrev, setAdvicePrev] = useState(null);
   const [adviceExist, setAdviceExist] = useState(null);
- 
+  const [adviceCreated, setAdviceCreated]= useState(null)
 
   const [item, setItem] = useState(null);
   const params = useParams();
@@ -65,47 +65,60 @@ const Study = () => {
           },
         }
       );
-      console.log("creacion advice", response);
+      let adviceResponse = response.data.data;
       Swal.fire({
         toast: true,
-        position: "top-end",
+        position: "top",
         showConfirmButton: false,
         timer: 3000,
         timerProgressBar: true,
         icon: "success",
-        title: "Respuesta Enviada",
+        title: "Advice Creado",
       });
       document.getElementById("advice").value = "";
       setAdvicePrev(null);
-    } catch (error) {}
+      setAdviceExist(true);
+      setAdviceCreated(adviceResponse.advice)
+    } catch (error) {
+      console.log(error)
+      Swal.fire({
+        toast: true,
+        position: "top",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        icon: "error",
+        title: "No se pudo crear su Advice",
+      });
+    }
   };
   const getItem = async () => {
-    if(token)
-    try {
+    if (token)
+      try {
         setItem(null);
-        setAdviceExist(null)
-      const { data } = await axios.get(
-        `https://property-advice.herokuapp.com/api/studies/${params.id}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+        setAdviceExist(null);
+        const { data } = await axios.get(
+          `https://property-advice.herokuapp.com/api/studies/${params.id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        const data1 = data.data;
+        setItem(data1);
+        if (data1.advice === undefined) {
+          setAdviceExist(false);
+        } else {
+          setAdviceExist(true);
+          setAdviceCreated(data1.advice.advice)
         }
-      );
-      
-      const data1 = data.data;
-      setItem(data1);
-      if (data1.advice === undefined) {
-        setAdviceExist(false);
-      } else {
-        setAdviceExist(true);
-      }
-    } catch (err) {
-      
-      const err1 =  err.response.status;
-      
-      if(err1 === 400){
-        Swal.fire({
+      } catch (err) {
+        const err1 = err.response.status;
+
+        if (err1 === 400) {
+          Swal.fire({
             toast: true,
             position: "top",
             showConfirmButton: false,
@@ -114,18 +127,15 @@ const Study = () => {
             icon: "Error",
             title: "Usuario Invalido",
           });
-          navigate("/userClient")
+          navigate("/userClient");
+        }
       }
-      
-      
-    }
   };
   useEffect(() => {
-    
     getItem();
     // eslint-disable-next-line
   }, [reduxExpired]);
-  
+
   return (
     <div className="studyContainer">
       <div className="AdvicerContainer">
@@ -149,12 +159,16 @@ const Study = () => {
                 ></img>
                 {reduxExpired ? (
                   <></>
-                ) : (
+                ) : ( role==="client"?
                   <ButtonComp
                     setClick={() => navigate("/userClient")}
                     className={"buttonComp1 cardContainer"}
                     child={"volver"}
-                  />
+                  />: <ButtonComp
+                  setClick={() => navigate("/advicer")}
+                  className={"buttonComp1 cardContainer"}
+                  child={"volver"}
+                />
                 )}
               </div>
             </div>
@@ -182,7 +196,7 @@ const Study = () => {
               </div>
             )}
             {!reduxExpired && item ? (
-              <StudyRender item={item} role1={role} />
+              <StudyRender item={item} role1={role} adviceCreated={adviceCreated} />
             ) : (
               <></>
             )}
@@ -193,7 +207,7 @@ const Study = () => {
               <div className="infoContainer">
                 <div className="formCreateStudy">
                   <form onSubmit={handleSubmit} className="formStudy">
-                    <h1>El advice a esta Solicitud debe ser Formato Pdf</h1>
+                    <h1>El advice a esta solicitud debe ser formato Pdf</h1>
                     <button className="inputDiv cardContainer" type="button">
                       <label htmlFor={"advice"}>Seleccionar Advice</label>
                       <input
@@ -207,13 +221,16 @@ const Study = () => {
                         }}
                       ></input>
                     </button>
+                    <div>
                     {!!advicePrev && (
                       <img
                         className="condImg"
                         src={advicePrev}
                         alt="advice"
                       ></img>
-                    )}
+                    )}  
+                    </div>
+                    
                     <div className="loginAndSign">
                       <button
                         type="submit"

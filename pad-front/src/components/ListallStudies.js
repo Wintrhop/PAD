@@ -6,6 +6,12 @@ import "../styles/components/listAllStudies.scss";
 const ListallStudies = () => {
   const token = localStorage.getItem("token");
   const [studies, setStudies] = useState(null);
+  const [studiesChanged, setStudiesChanged] = useState(null);
+  const [pendingStudies, setPendinStudies] = useState(null);
+  const [studiesWithAdvice, setStudiesWithAdvice] = useState(null);
+  const [textSelector, SetTextSelector] = useState("");
+  const [flag, setFlag] = useState(null);
+
   const getStudies = async () => {
     try {
       const { data } = await axios.get(
@@ -16,7 +22,19 @@ const ListallStudies = () => {
           },
         }
       );
-      setStudies(data.data.studies);
+      const allStudies = data.data.studies;
+      const pendings = allStudies.filter((item) => item.advice === undefined);
+      const withAdvice = allStudies.filter((item) => item.advice !== undefined);
+      setStudies(allStudies);
+      setPendinStudies(pendings);
+      setStudiesWithAdvice(withAdvice);
+      if (textSelector === "") {
+        SetTextSelector("Estudios con respuesta");
+      }
+      if (flag === null) {
+        setFlag(true);
+      }
+
     } catch (err) {
       const err1 = err.response.data;
     }
@@ -24,21 +42,62 @@ const ListallStudies = () => {
 
   useEffect(() => {
     getStudies();
+    update();
     // eslint-disable-next-line
   }, [studies]);
+  const update = () => {
+    if (flag !== null) {
+      if (studies && flag) {
+        setStudiesChanged(pendingStudies);
+      } else if (studies && !flag) {
+        setStudiesChanged(studiesWithAdvice);
+      }
+    }
+  };
+  const itemsChange = () => {
+    if (studies && flag) {
+      setStudiesChanged(pendingStudies);
+      SetTextSelector("Estudios Pendientes");
+      setFlag(false);
+    } else {
+      setStudiesChanged(studiesWithAdvice);
+      SetTextSelector("Estudios con respuesta");
+      setFlag(true);
+    }
+  };
   return (
     <div className="studiesBox">
       {studies ? (
         <div className="studiesContainer">
-          <div className="studiesTitle">Tus Solicitudes</div>
+          <div className="loginAndSign">
+            <div className="studiesTitle">Tus solicitudes</div>
+            <button
+              className="inputDiv cardContainer"
+              onClick={() => itemsChange()}
+            >
+              {textSelector}
+            </button>
+          </div>
           <div className="cardMapContainer">
-            {studies.map((item) => {
-              return (
-                <div className="mapCard" key={item._id}>
-                  <Card item={item} />
-                </div>
-              );
-            })}
+            {studiesChanged ? (
+              studiesChanged.map((item) => {
+                return (
+                  <div className="mapCard" key={item._id}>
+                    <Card item={item} />
+                  </div>
+                );
+              })
+            ) : studies ? (
+              studies.map((item) => {
+                return (
+                  <div className="mapCard" key={item._id}>
+                    <Card item={item} />
+                  </div>
+                );
+              })
+            ) : (
+              <></>
+            )}
           </div>
         </div>
       ) : (

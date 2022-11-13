@@ -65,31 +65,32 @@
   h1 {
     line-height: 25px;
   }
-  .inputDiv {
-    margin-top: 10px;
-    width: 80%;
-    border: none;
-    padding: 12px;
-    cursor: pointer;
-    background-color: #2480af;
-    color: white;
-    font-size: 16px;
-    font-family: "Roboto", sans-serif;
-    font-weight: bold;
-    border-radius: 8px;
-    input {
-      visibility: hidden;
-      position: absolute;
-    }
-  }
-  .inputDiv:hover {
-    background-color: #288fc2;
-    color: white;
-  }
+  
   .condImg {
     width: 100%;
     margin-top: 10px;
   }
+}
+.inputDiv {
+  margin-top: 10px;
+  width: 80%;
+  border: none;
+  padding: 12px;
+  cursor: pointer;
+  background-color: #2480af;
+  color: white;
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  border-radius: 8px;
+  input {
+    visibility: hidden;
+    position: absolute;
+  }
+}
+.inputDiv:hover {
+  background-color: #288fc2;
+  color: white;
 }
 
   .buttonComp1{

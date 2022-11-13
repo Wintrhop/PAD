@@ -1,0 +1,49 @@
+.studyContainerFlex {
+  width: 100%;
+  margin-top: 24px;
+}
+.renderFlex {
+  width: 100%;
+}
+.studyImgRend {
+  width: 100%;
+  border-radius: 8px;
+  padding: 10px 0px 10px 0px;
+  object-fit: cover;
+  
+}
+
+@media (min-width: 768px) {
+  .renderFlex {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: space-around;
+  }
+  .studyImgRend {
+    width: 45%;
+    
+  }
+}
+@media (min-width: 992px) {
+  .studyContainerFlex {
+    display: flex;
+    align-items: center;
+  }
+
+  .renderFlex {
+    width: 70%;
+  }
+  .clientRenderInfo {
+    width: 30%;
+  }
+}
+@media (min-width: 1200px) {
+    .renderFlex {
+        width: 75%;
+      }
+      .clientRenderInfo {
+        width: 25%;
+      }
+}

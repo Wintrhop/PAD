@@ -12,6 +12,7 @@ import LogoRadius from "../styles/imgs/PadwithBorderLogo.png";
 import "../styles/pages/advicer.scss";
 
 import "../styles/components/listAllStudies.scss";
+import AdminBtn from "../components/AdminBtn";
 
 const Advicer = () => {
   const navigate = useNavigate();
@@ -104,6 +105,7 @@ const Advicer = () => {
                   child={"Solicitar un estudio de titulos"}
                 />
               )}
+              <AdminBtn/>
             </div>
           </div>
         </div>
@@ -170,13 +172,16 @@ const Advicer = () => {
                       }}
                     ></input>
                   </button>
-                  {!!certificatePrev && (
-                    <img
-                      className="condImg"
-                      src={certificatePrev}
-                      alt="certificate"
-                    ></img>
-                  )}
+                  <div>
+                    {!!certificatePrev && (
+                      <img
+                        className="condImg"
+                        src={certificatePrev}
+                        alt="certificate"
+                      ></img>
+                    )}
+                  </div>
+
                   <div className="loginAndSign">
                     <button type="submit" className="popoverBtn cardContainer">
                       Enviar documento
