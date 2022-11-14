@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import InfoClient from "../components/InfoClient";
 
 import "../styles/components/listAllStudies.scss";
+import Payment from "../components/Payment";
 
 const Client = () => {
   const navigate = useNavigate();
@@ -87,6 +88,8 @@ const Client = () => {
         icon: "success",
         title: "Estudio de Titulos Creado",
       });
+      
+
       document.getElementById("tradLib").value = "";
       document.getElementById("mayorExtension").value = "";
       document.getElementById("escritura").value = "";
@@ -95,7 +98,7 @@ const Client = () => {
       setMayorExtPrev(null);
       setEscrituraPrev(null);
       setRegPropHoPrev(null);
-      setStates((e)=>e+1)
+      setStates((e) => e + 1);
     } catch (error) {}
   };
   return (
@@ -222,13 +225,21 @@ const Client = () => {
                       ></img>
                     )}
                     <div className="loginAndSign">
-                      <button type="submit" className="popoverBtn">
-                        Solicitar Estudio de Titulos
-                      </button>
+                      <Payment
+                      setClick={handleSubmit}
+                        type="button"
+                        className={"popoverBtn"}
+                        price1={190000}
+                        name1={name}
+                        tradlibPrev={tradlibPrev}
+                        mayorExtPrev={mayorExtPrev}
+                        escrituraPrev={escrituraPrev}
+                        regPropHoPrev={regPropHoPrev}
+                      />
                     </div>
                   </form>
                 </div>
-                <ListallStudies states={states} setStates={setStates}/>
+                <ListallStudies states={states} setStates={setStates} />
               </div>
             )}
           </div>

@@ -11,7 +11,6 @@ const PetUser = (props) => {
   const token = localStorage.getItem("token");
   const id = props.id;
   const [openedPet, setOpenedPet]= useState(false)
-  console.log(props.petition)
   
   const handleClick = async ()=>{
     try {

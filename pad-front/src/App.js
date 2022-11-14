@@ -7,6 +7,7 @@ import Client from "./pages/Client";
 import Advicer from "./pages/Advicer";
 import Study from "./pages/Study";
 import Admin from "./pages/Admin";
+import ConfirmationPay from "./pages/ConfirmationPay";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="/study">
               <Route path=":id" element={<Study />} />
             </Route>
+            <Route path="/userClient/confirmationPay" element={<ConfirmationPay />} />
             
           </Routes>
         </div>

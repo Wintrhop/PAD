@@ -26,7 +26,6 @@ const AdminListPetitions = () => {
           },
         }
       );
-      console.log(data.data[0].user)
       const allPets = data.data;
       const pendings = allPets.filter((item) => item.user.approved === false);
       const approved = allPets.filter((item) => item.user.approved === true);
@@ -46,7 +45,7 @@ const AdminListPetitions = () => {
         <div className="petslist pendings">
           {reduxExpired ? (
             <></>
-          ) : pendingsPets && pendingsPets.lenght === 0 ? (
+          ) : pendingsPets[0] === undefined ? (
             <></>
           ) : (
             <div className="adminTitle">Pendientes</div>
@@ -73,7 +72,7 @@ const AdminListPetitions = () => {
         <div className="petslist approved">
           {reduxExpired ? (
             <></>
-          ) : approvedPets && approvedPets.lenght === 0 ? (
+          ) : approvedPets[0] === undefined ? (
             <></>
           ) : (
             <div className="adminTitle">Aprobadas</div>

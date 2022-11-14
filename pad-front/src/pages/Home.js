@@ -1,11 +1,15 @@
 
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import AdminBtn from "../components/AdminBtn";
 import ButtonComp from "../components/ButtonComp";
 import LogoButton from "../components/LogoButton";
 import "../styles/pages/home.scss";
 
 const Home = () => {
   const navigate = useNavigate()
+
+  const reduxExpired = useSelector((state) => state.authReducer.isExpired);
   return (
     <div className="homeContainer">
       <div className="homeHeaderFlex">
@@ -46,7 +50,12 @@ const Home = () => {
       <div className="homeButtons">
         <ButtonComp setClick ={()=> navigate("/userClient")} className={"buttonComp"} child={"Solicita un estudio de titulos"} />
         <ButtonComp setClick ={()=> navigate("/advicer")} className={"buttonComp"} child={"Conviértete en colaborador"} />
+        
       </div>
+      <div>
+      {reduxExpired?<></>:<AdminBtn/>}  
+      </div>
+      
     </div>
   );
 };
