@@ -1,0 +1,160 @@
+.modalPetContainer {
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+  
+}
+.dateContainer1 {
+  padding: 48px;
+  background-color: #2480af;
+  .date1{
+    color: #32b4f5;
+  }
+  
+}
+.datesFlex{
+    padding: 48px;
+    background-color: #e0ecf5;
+    
+}
+.petsDatesContainer{
+    margin-bottom: 10px;
+}
+.dateContainer{
+    padding: 20px;
+    background-color: #e0ecf5;
+    
+}
+.modalTarjeta{
+    padding: 28px;
+}
+.infoClientModal {
+  
+}
+.infoHeader{
+    margin: 48px;
+    .userRole{
+        font-size: 24px;
+    }
+}
+.date {
+  
+}
+.headerSections {
+  height: 28;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 0px 14px 0px;
+
+  .rentSection {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+
+    .descriptionBtn {
+      padding: 12px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      border: none;
+
+      .descSvg {
+        transform: rotate(180deg);
+        height: 12px;
+        width: 12px;
+      }
+    }
+    .descriptionBtn:hover {
+      background-color: rgb(235, 232, 232);
+    }
+
+    .hove {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      padding: 8px;
+      outline: none;
+      border: none;
+      background: transparent;
+      font-size: 14px;
+      border-radius: 5px;
+
+      .nFill {
+        padding: 0px 8px 0px 0px;
+        fill: none;
+        height: 16px;
+        width: 16px;
+        stroke: currentColor;
+        stroke-width: 2;
+        overflow: visible;
+        box-sizing: revert;
+      }
+    }
+    .hove:hover {
+      background-color: rgb(235, 232, 232);
+    }
+  }
+}
+
+@media (min-width: 768px) {
+    
+  .headerSections {
+    padding: 24px;
+  }
+  .dateContainer1{
+    width: 70%;
+    margin: 0 auto;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
+  .datesFlex{
+    width: 70%;
+    margin: 0 auto;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .petsDatesContainer{
+    width: 50%;
+  }
+  .petDate{
+    width: 100%;
+  }
+  
+  .dateContainer {
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+  }
+  .infoClientModal {
+    width: 50%;
+  }
+  .date {
+    width: 50%;
+  }
+}
+
+@media (min-width: 992px) {
+    .dateContainer1{
+        width: 60%;
+    }
+    .datesFlex{
+        width: 60%;
+    }
+    
+}
+@media (min-width: 1200px) {
+    .dateContainer1{
+        width: 45%;
+    }
+    .datesFlex{
+        width: 45%;
+    }
+    
+}

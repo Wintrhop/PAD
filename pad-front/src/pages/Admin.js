@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -18,7 +18,7 @@ import AdminListPetitions from "../components/AdminListPetitions";
 const Admin = () => {
     const navigate = useNavigate();
   const reduxExpired = useSelector((state) => state.authReducer.isExpired);
-  const role = useSelector((state) => state.authReducer.role);
+  const role = localStorage.getItem("role");
   const token = localStorage.getItem("token");
   const name = localStorage.getItem("name");
   const email = localStorage.getItem("email");
@@ -26,6 +26,17 @@ const Admin = () => {
   const [certificate, setCertificate] = useState(null);
   const [certificatePrev, setCertificatePrev] = useState(null);
   const [petAlreadyCreated, setPetAlreadyCreated] = useState(null);
+
+  const verify = ()=>{
+    if(role==="client"){
+      navigate("/userClient")
+    } else if(role==="advicer"){
+      navigate("/advicer")
+    }
+  }
+  useEffect(()=>{
+    verify();
+  },[])
   return (
     <div className="AdvicerContainer">
       <div className="advicerFlexContainer">

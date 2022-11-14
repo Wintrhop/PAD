@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Card from "./Card";
 import "../styles/components/listAllStudies.scss";
 
-const ListallStudies = () => {
+const ListallStudies = ({states,setStates}) => {
   const token = localStorage.getItem("token");
   const [studies, setStudies] = useState(null);
   const [studiesChanged, setStudiesChanged] = useState(null);
@@ -34,9 +34,9 @@ const ListallStudies = () => {
       if (flag === null) {
         setFlag(true);
       }
-
     } catch (err) {
-      const err1 = err.response.data;
+      
+      console.log(err)
     }
   };
 
@@ -44,7 +44,7 @@ const ListallStudies = () => {
     getStudies();
     update();
     // eslint-disable-next-line
-  }, [studies]);
+  }, [states]);
   const update = () => {
     if (flag !== null) {
       if (studies && flag) {

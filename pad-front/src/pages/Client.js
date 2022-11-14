@@ -28,6 +28,7 @@ const Client = () => {
   const [escrituraPrev, setEscrituraPrev] = useState(null);
   const [regPropHo, setRegPropHo] = useState(null);
   const [regPropHoPrev, setRegPropHoPrev] = useState(null);
+  const[states,setStates]= useState(0)
 
   let buttonText = "";
   if (role === "client") {
@@ -94,6 +95,7 @@ const Client = () => {
       setMayorExtPrev(null);
       setEscrituraPrev(null);
       setRegPropHoPrev(null);
+      setStates((e)=>e+1)
     } catch (error) {}
   };
   return (
@@ -226,7 +228,7 @@ const Client = () => {
                     </div>
                   </form>
                 </div>
-                <ListallStudies />
+                <ListallStudies states={states} setStates={setStates}/>
               </div>
             )}
           </div>

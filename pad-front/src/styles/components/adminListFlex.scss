@@ -1,0 +1,37 @@
+.adminListContainer{
+    margin-top: 24px;
+}
+.petslist{
+    width: 100%;
+}
+
+.adminListFlex{
+    width: 100%;
+}
+.adminTitle{
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 24px;
+}
+
+
+
+@media (min-width: 768px) {
+.petslist{
+    width: 42%;
+}
+.adminListFlex{
+    display: flex;
+    justify-content: center;
+}
+.petCard{
+    height: 120px;
+    border-radius: 8px;
+}
+}
+@media (min-width: 992px) {
+
+}
+@media (min-width: 1200px) {
+    
+}

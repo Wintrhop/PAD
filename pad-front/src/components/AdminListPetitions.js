@@ -4,6 +4,7 @@ import { isExpired } from "react-jwt";
 import { useSelector } from "react-redux";
 import InfoClient from "./InfoClient";
 import PetUser from "./PetUser";
+import "../styles/components/adminListFlex.scss";
 
 const AdminListPetitions = () => {
   const role = useSelector((state) => state.authReducer.role);
@@ -12,6 +13,7 @@ const AdminListPetitions = () => {
   const [pets, setPets] = useState(null);
   const [pendingsPets, setPendingsPets] = useState(null);
   const [approvedPets, setApprovedPets] = useState(null);
+  const [states, setStates] = useState(0);
 
   const profileImg = localStorage.getItem("profileImg");
   const getPets = async () => {
@@ -24,45 +26,76 @@ const AdminListPetitions = () => {
           },
         }
       );
+      console.log(data.data[0].user)
       const allPets = data.data;
-      const pendings = allPets.filter((item) => item.user.approved !== true);
+      const pendings = allPets.filter((item) => item.user.approved === false);
       const approved = allPets.filter((item) => item.user.approved === true);
-      setPets(allPets);
-      setPendingsPets(pendings);
-      setApprovedPets(approved);
+
+      setPets((pets) => allPets);
+      setPendingsPets((pendingsPets) => pendings);
+      setApprovedPets((approvedPets) => approved);
     } catch (err) {}
   };
   useEffect(() => {
     getPets();
-  }, [pets]);
+  }, [states]);
+
   return (
     <div className="adminListContainer">
       <div className="adminListFlex">
-        <div className="pendings">
-        {reduxExpired?<></>:<div>Pendientes</div>}
-          {!reduxExpired && pets ?
+        <div className="petslist pendings">
+          {reduxExpired ? (
+            <></>
+          ) : pendingsPets && pendingsPets.lenght === 0 ? (
+            <></>
+          ) : (
+            <div className="adminTitle">Pendientes</div>
+          )}
+          {!reduxExpired && pets ? (
             pendingsPets.map((item) => {
               return (
-                <div className="" key={item._id}>
-                  <PetUser item={item.user} profileImg={profileImg} />
+                <div className="petCard cardContainer" key={item._id}>
+                  <PetUser
+                    setStates={setStates}
+                    item={item.user}
+                    petition={item}
+                    id={item._id}
+                    profileImg={profileImg}
+                  />
                 </div>
               );
-            }):<></>}
+            })
+          ) : (
+            <></>
+          )}
         </div>
 
-        <div className="approved">
-        {reduxExpired?<></>:<div>Aprovadas</div>}
+        <div className="petslist approved">
+          {reduxExpired ? (
+            <></>
+          ) : approvedPets && approvedPets.lenght === 0 ? (
+            <></>
+          ) : (
+            <div className="adminTitle">Aprobadas</div>
+          )}
 
-          
-          {!reduxExpired && pets?
-            pendingsPets.map((item) => {
+          {!reduxExpired && approvedPets ? (
+            approvedPets.map((item) => {
               return (
-                <div className="" key={item._id}>
-                  <PetUser item={item.user} profileImg={profileImg} />
+                <div className="petCard cardContainer" key={item._id}>
+                  <PetUser
+                    setStates={setStates}
+                    item={item.user}
+                    petition={item}
+                    id={item._id}
+                    profileImg={profileImg}
+                  />
                 </div>
               );
-            }):<></>}
-            
+            })
+          ) : (
+            <></>
+          )}
         </div>
       </div>
     </div>

@@ -25,6 +25,7 @@ const Advicer = () => {
   const [certificate, setCertificate] = useState(null);
   const [certificatePrev, setCertificatePrev] = useState(null);
   const [petAlreadyCreated, setPetAlreadyCreated] = useState(null);
+  const[states,setStates]= useState(0)
 
   function readFile(file, setFilePrev) {
     const reader = new FileReader();
@@ -77,6 +78,7 @@ const Advicer = () => {
       document.getElementById("certificate").value = "";
       setCertificatePrev(null);
       setPetAlreadyCreated(true);
+      setStates((e)=>e+1)
     } catch (error) {}
   };
 
@@ -191,7 +193,7 @@ const Advicer = () => {
               </div>
             </div>
           ) : role === "advicer" ? (
-            <ListAssignments />
+            <ListAssignments states={states} setStates={setStates} />
           ) : (
             <></>
           )}

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Card from "./Card";
 import "../styles/components/listAllStudies.scss";
 
-const ListAssignments = () => {
+const ListAssignments = ({states, setStates}) => {
   const token = localStorage.getItem("token");
   const [assignments, setAssignments] = useState(null);
   const [pendingsAssign, setPendingsAssign] = useState(null);
@@ -48,7 +48,7 @@ const ListAssignments = () => {
     getAssignments();
     update();
     // eslint-disable-next-line
-  }, [assignments]);
+  }, [states]);
   const update = () => {
     if (items && flag) {
       setItemsChanged(pendingsAssign);

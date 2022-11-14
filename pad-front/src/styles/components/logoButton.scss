@@ -12,3 +12,28 @@
 .logoButton:hover{
     background-color: #234cad;
 }
+@media (min-width: 768px) {
+    .logoButton{
+        
+        img{
+            height: 35px;
+            
+        }
+    
+    }
+
+}
+@media (min-width: 992px) {
+    .logoButton{
+        
+        img{
+            height: 48px;
+            
+        }
+    
+    }
+
+}
+@media (min-width: 1200px) {
+    
+}
