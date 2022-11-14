@@ -14,6 +14,7 @@ const AdminListPetitions = () => {
   const [pendingsPets, setPendingsPets] = useState(null);
   const [approvedPets, setApprovedPets] = useState(null);
   const [states, setStates] = useState(0);
+  const [titles,setTitles]= useState(0)
 
   const profileImg = localStorage.getItem("profileImg");
   const getPets = async () => {
@@ -45,10 +46,10 @@ const AdminListPetitions = () => {
         <div className="petslist pendings">
           {reduxExpired ? (
             <></>
-          ) : pendingsPets[0] === undefined ? (
-            <></>
-          ) : (
+          ) : pendingsPets ? (
             <div className="adminTitle">Pendientes</div>
+          ) : (
+            <></>
           )}
           {!reduxExpired && pets ? (
             pendingsPets.map((item) => {
@@ -72,7 +73,7 @@ const AdminListPetitions = () => {
         <div className="petslist approved">
           {reduxExpired ? (
             <></>
-          ) : approvedPets[0] === undefined ? (
+          ) : !approvedPets? (
             <></>
           ) : (
             <div className="adminTitle">Aprobadas</div>
