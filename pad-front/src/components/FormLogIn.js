@@ -10,19 +10,18 @@ const FormLogIn = ({ setOpenedLog, setOpenedPop, setExpired }) => {
   const passwordRegex = new RegExp(
     "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"
   );
+
   const form = useForm({
-    initialValues: {
-      email: "",
-      password: "",
-    },
+    initialValues: { email: '', password: '' },
+
+    // functions will be used to validate values at corresponding key
     validate: {
-      email: (value) => (/^\S+@\S+$/.test(value) ? null : "Email Invalido"),
-      password: (value) =>
-        passwordRegex.test(value) ? null : "Ingrese una contraseña",
+      email: (value) => (/^\S+@\S+$/.test(value) ? null : 'Email invalido'),
+      password: (value) => (passwordRegex.test(value)? null : "Contraseña insegura"),
     },
   });
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+
+  const handleSubmit = async () => {
     const { name, email, password } = form.values;
     if (name === "" && email === "") {
       alert("Por favor llene el formulario antes de continuar");
@@ -36,6 +35,15 @@ const FormLogIn = ({ setOpenedLog, setOpenedPop, setExpired }) => {
           "https://property-advice.herokuapp.com/auth/local/logIn",
           user
         );
+        Swal.fire({
+          toast: true,
+          position: "top",
+          showConfirmButton: false,
+          timer: 1800,
+          timerProgressBar: true,
+          icon: "success",
+          title: "Sesión iniciada",
+        });
 
         localStorage.setItem("token", data.data.token);
         localStorage.setItem("role", data.data.role);
@@ -65,7 +73,7 @@ const FormLogIn = ({ setOpenedLog, setOpenedPop, setExpired }) => {
   };
   return (
     <Box sx={{ maxWidth: 300 }} mx="auto">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={form.onSubmit(handleSubmit)}>
         <TextInput
           withAsterisk
           label="Email"
@@ -75,8 +83,8 @@ const FormLogIn = ({ setOpenedLog, setOpenedPop, setExpired }) => {
 
         <PasswordInput
           withAsterisk
-          label="Password"
-          placeholder="Password"
+          label="Contraseña"
+          placeholder="Contraseña"
           {...form.getInputProps("password")}
         />
 
