@@ -16,7 +16,7 @@ const Home = () => {
         <div className="homeHeaderSlogan">
           <div className="sloganText">
             <h1>
-              ¡No pares de Soñar!, te ayudamos con el estudio de la propiedad.
+              ¡No pares de soñar!, te ayudamos con el estudio de la propiedad.
             </h1>
           </div>
           <div className="sloganAditionalText">

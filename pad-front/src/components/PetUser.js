@@ -15,7 +15,7 @@ const PetUser = (props) => {
   const handleClick = async ()=>{
     try {
       const data = new FormData();
-      const response = await axios.post(
+      await axios.post(
         `https://property-advice.herokuapp.com/api/adPets/adm/${id}`,data,
         {
           headers: {
@@ -25,12 +25,13 @@ const PetUser = (props) => {
       );
       
       props.setStates((e)=> e+1)
+      
     } catch (err) {
       console.log(err)
     }
   }
   return (
-    <div>
+    <div className="infoClientStudy"> 
       <div className="infoClientFlex" onClick={()=>setOpenedPet(true)}>
       <Modal
               opened={openedPet}
@@ -48,6 +49,7 @@ const PetUser = (props) => {
             alt="profile img"
           ></img>
         </div>
+        
         <div className="infoClient">
           <div className="nameClient">{user.name}</div>
           <div className="emailClient">{user.email}</div>

@@ -46,7 +46,8 @@ const Admin = () => {
               {reduxExpired ? (
                 <></>
               ) : (
-                <InfoClient name={name} email={email} profileImg={profileImg} />
+                <div className="infoClientStudy"><InfoClient name={name} email={email} profileImg={profileImg} /></div>
+                
               )}
               <img
                 className="clientLogo"

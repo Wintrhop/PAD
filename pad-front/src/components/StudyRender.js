@@ -4,11 +4,12 @@ import InfoClient from "./InfoClient";
 import "../styles/components/studyRender.scss"
 
 const StudyRender = ({ item, adviceCreated }) => {
+
+  const role = localStorage.getItem('role')
   let userStudy;
   if (item) {
     userStudy = item.user;
   }
-  const role = useSelector((state) => state.authReducer.role);
  
 
   const profileImg = localStorage.getItem("profileImg");

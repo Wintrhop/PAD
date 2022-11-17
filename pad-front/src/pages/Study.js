@@ -8,12 +8,15 @@ import ButtonComp from "../components/ButtonComp";
 import InfoClient from "../components/InfoClient";
 import StudyRender from "../components/StudyRender";
 import LogoRadius from "../styles/imgs/PadwithBorderLogo.png";
+import "../styles/pages/study.scss"
 
 const Study = () => {
   const navigate = useNavigate();
+  const [states, setStates]= useState(0)
+  const [role, setRole]= useState('')
   const reduxExpired = useSelector((state) => state.authReducer.isExpired);
-  const role = useSelector((state) => state.authReducer.role);
-
+  const role1 = localStorage.getItem('role')
+  console.log('role de local',role1 )
   const name = localStorage.getItem("name");
   const email = localStorage.getItem("email");
   const profileImg = localStorage.getItem("profileImg");
@@ -21,7 +24,6 @@ const Study = () => {
   const [advicePrev, setAdvicePrev] = useState(null);
   const [adviceExist, setAdviceExist] = useState(null);
   const [adviceCreated, setAdviceCreated]= useState(null)
-
   const [item, setItem] = useState(null);
   const params = useParams();
   const token = localStorage.getItem("token");
@@ -105,7 +107,6 @@ const Study = () => {
             },
           }
         );
-
         const data1 = data.data;
         setItem(data1);
         if (data1.advice === undefined) {
@@ -133,8 +134,9 @@ const Study = () => {
   };
   useEffect(() => {
     getItem();
+    setRole(role1)
     // eslint-disable-next-line
-  }, [reduxExpired]);
+  }, [states]);
 
   return (
     <div className="studyContainer">
@@ -146,11 +148,14 @@ const Study = () => {
                 {reduxExpired ? (
                   <></>
                 ) : (
+                  <div className="infoClientStudy">
                   <InfoClient
                     name={name}
                     email={email}
                     profileImg={profileImg}
-                  />
+                  />  
+                  </div>
+                  
                 )}
                 <img
                   className="clientLogo"

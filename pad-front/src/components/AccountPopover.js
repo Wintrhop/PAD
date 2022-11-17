@@ -6,6 +6,7 @@ import FormSignup from "./FormSignup";
 import { useJwt } from "react-jwt";
 import { useDispatch } from "react-redux";
 import { changeisExpired, changeName, changeRole } from "../store/reducer/authReducer";
+import Swal from "sweetalert2";
 
 const AccountPopover = ({ setOpenedPop, hidden }) => {
   const dispatch= useDispatch();
@@ -17,6 +18,15 @@ const AccountPopover = ({ setOpenedPop, hidden }) => {
   const [expired, setExpired] = useState(true);
 
   const closeSession = () => {
+    Swal.fire({
+      toast: true,
+      position: "top",
+      showConfirmButton: false,
+      timer: 1800,
+      timerProgressBar: true,
+      icon: "success",
+      title: "Sesión Cerrada",
+    });
     localStorage.removeItem("token");
     localStorage.removeItem("email");
     localStorage.removeItem("role");

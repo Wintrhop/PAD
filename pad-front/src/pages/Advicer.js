@@ -25,7 +25,7 @@ const Advicer = () => {
   const [certificate, setCertificate] = useState(null);
   const [certificatePrev, setCertificatePrev] = useState(null);
   const [petAlreadyCreated, setPetAlreadyCreated] = useState(null);
-  const[states,setStates]= useState(0)
+  const [states, setStates] = useState(0);
 
   function readFile(file, setFilePrev) {
     const reader = new FileReader();
@@ -65,20 +65,21 @@ const Advicer = () => {
           },
         }
       );
-      console.log("creacion peticion", response);
+
       Swal.fire({
         toast: true,
-        position: "top-end",
+        position: "top",
         showConfirmButton: false,
         timer: 3000,
         timerProgressBar: true,
         icon: "success",
         title: "Excelente, verificaremos tus documentos",
       });
+      console.log(response);
       document.getElementById("certificate").value = "";
       setCertificatePrev(null);
       setPetAlreadyCreated(true);
-      setStates((e)=>e+1)
+      setStates((e) => e + 1);
     } catch (error) {}
   };
 
@@ -91,7 +92,13 @@ const Advicer = () => {
               {reduxExpired ? (
                 <></>
               ) : (
-                <InfoClient name={name} email={email} profileImg={profileImg} />
+                <div className="infoClientStudy">
+                  <InfoClient
+                    name={name}
+                    email={email}
+                    profileImg={profileImg}
+                  />
+                </div>
               )}
               <img
                 className="clientLogo"
@@ -107,7 +114,7 @@ const Advicer = () => {
                   child={"Solicitar un estudio de titulos"}
                 />
               )}
-              <AdminBtn/>
+              <AdminBtn />
             </div>
           </div>
         </div>

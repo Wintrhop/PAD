@@ -16,7 +16,7 @@ import Payment from "../components/Payment";
 const Client = () => {
   const navigate = useNavigate();
   const reduxExpired = useSelector((state) => state.authReducer.isExpired);
-  const role = useSelector((state) => state.authReducer.role);
+  const role = localStorage.getItem('role')
   const token = localStorage.getItem("token");
   const name = localStorage.getItem("name");
   const email = localStorage.getItem("email");
@@ -30,6 +30,7 @@ const Client = () => {
   const [regPropHo, setRegPropHo] = useState(null);
   const [regPropHoPrev, setRegPropHoPrev] = useState(null);
   const[states,setStates]= useState(0)
+  console.log('role',role);
 
   let buttonText = "";
   if (role === "client") {
