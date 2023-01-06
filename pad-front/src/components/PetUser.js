@@ -16,7 +16,7 @@ const PetUser = (props) => {
     try {
       const data = new FormData();
       await axios.post(
-        `https://property-advice.herokuapp.com/api/adPets/adm/${id}`,data,
+        `${process.env.REACT_APP_PADBACK}/api/adPets/adm/${id}`,data,
         {
           headers: {
             Authorization: `Bearer ${token}`,

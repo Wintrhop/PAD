@@ -42,7 +42,7 @@ const ConfirmationPay = () => {
       e.preventDefault();
       
       const res = await axios.post(
-        "https://property-advice.herokuapp.com/api/studies",
+        `${process.env.REACT_APP_PADBACK}/api/studies`,
         data,
         {
           headers: {

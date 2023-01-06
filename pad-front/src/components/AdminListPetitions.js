@@ -15,12 +15,11 @@ const AdminListPetitions = () => {
   const [approvedPets, setApprovedPets] = useState(null);
   const [states, setStates] = useState(0);
   const [titles,setTitles]= useState(0)
-
   const profileImg = localStorage.getItem("profileImg");
   const getPets = async () => {
     try {
       const { data } = await axios.get(
-        "https://property-advice.herokuapp.com/api/adPets/adm",
+        `${process.env.REACT_APP_PADBACK}/api/adPets/adm`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

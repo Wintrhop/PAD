@@ -56,7 +56,7 @@ const Advicer = () => {
       }
 
       const response = await axios.post(
-        "https://property-advice.herokuapp.com/api/adPets/",
+        `${process.env.REACT_APP_PADBACK}/api/adPets/`,
         data,
         {
           headers: {

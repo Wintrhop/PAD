@@ -39,7 +39,7 @@ const FormSignup = ({ setOpened, setOpenedPop, setExpired }) => {
           password, 
         };
         const { data } = await axios.post(
-          "https://property-advice.herokuapp.com/auth/local/signUp",
+          `${process.env.REACT_APP_PADBACK}/auth/local/signUp`,
           user
         );
         Swal.fire({

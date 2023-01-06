@@ -10,7 +10,7 @@ const PetitionCreated = ({ setPetAlreadyCreated, petAlreadyCreated }) => {
   const peticionCreated = async () => {
     try {
       const { data } = await axios.get(
-        "https://property-advice.herokuapp.com/api/adPets/userPet",
+        `${process.env.REACT_APP_PADBACK}/api/adPets/userPet`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

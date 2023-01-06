@@ -58,7 +58,7 @@ const Study = () => {
       }
 
       const response = await axios.post(
-        `https://property-advice.herokuapp.com/api/advices/${params.id}`,
+        `${process.env.REACT_APP_PADBACK}/api/advices/${params.id}`,
         data,
         {
           headers: {
@@ -100,7 +100,7 @@ const Study = () => {
         setItem(null);
         setAdviceExist(null);
         const { data } = await axios.get(
-          `https://property-advice.herokuapp.com/api/studies/${params.id}`,
+          `${process.env.REACT_APP_PADBACK}/api/studies/${params.id}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

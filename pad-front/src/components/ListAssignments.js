@@ -14,7 +14,7 @@ const ListAssignments = ({states, setStates}) => {
   const getAssignments = async () => {
     try {
       const { data } = await axios.get(
-        "https://property-advice.herokuapp.com/api/studies/advicer",
+        `${process.env.REACT_APP_PADBACK}/api/studies/advicer`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
